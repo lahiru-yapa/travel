@@ -66,7 +66,7 @@
                                 <ul>
                                     <li><a href="package-all.html">All Packages</a>
                                     </li>
-                                    <li><a href="package-add.html">Add New Package</a>
+                                    <li><a href="{{ route('add_new_tour') }}">Add New Tour</a>
                                     </li>
                                     <li><a href="package-cat-all.html">All Package Categories</a>
                                     </li>
@@ -74,10 +74,6 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-
-                        <li><a href="social-media.html"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Social
-                                Media</a>
                         </li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST">@csrf<button type="submit"><i

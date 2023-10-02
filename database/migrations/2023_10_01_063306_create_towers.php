@@ -14,14 +14,17 @@ return new class extends Migration
         Schema::create('towers', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');  
+            $table->string('days');
+            $table->text('description')->nullable();  
             $table->text('location_map_link')->nullable();
             $table->string('location');
             $table->string('Included')->nullable();
             $table->string('group_size');
             $table->string('category');
             $table->decimal('price', 10, 2);
-            $table->json('images')->nullable();
+            $table->string('home_image')->nullable();
+            $table->string('destination_image')->nullable();
+            $table->json('destination_details_image')->nullable();
             $table->timestamps();
         });
     }
