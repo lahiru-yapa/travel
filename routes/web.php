@@ -14,9 +14,11 @@ use App\Http\Controllers\AdminController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Route::prefix('admin')->group(function () {
-//     Route::get('/', [AdminController::class, 'index'])->name('admin');
-// });
+
+Route::prefix('admin')->group(function () {
+    Route::get('/add-new-tour', [AdminController::class, 'add_new_tour'])->name('add_new_tour');
+    Route::POST('/create_tour', [AdminController::class, 'create_tour'])->name('create_tour');
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
