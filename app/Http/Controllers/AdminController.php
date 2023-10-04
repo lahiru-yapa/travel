@@ -29,6 +29,7 @@ class AdminController extends Controller
         $tour->location_map_link = $request->input('location_map_link');
         $tour->location = $request->input('location');
         $tour->Included = $request->input('Included');
+        $tour->excluded = $request->input('excluded');
         $tour->group_size = $request->input('group_size');
         $tour->category =  $request->input('category');
         $tour->price = $request->input('price');
@@ -40,6 +41,13 @@ class AdminController extends Controller
             $homeImage->move(public_path('images'), $homeImage->getClientOriginalName());
              $tour->home_image = 'images/' . $homeImage->getClientOriginalName();
         }
+
+        if ($request->hasFile('destination_details_main_image')) {
+            $homeImage = $request->file('destination_details_main_image');
+            $homeImage->move(public_path('images'), $homeImage->getClientOriginalName());
+             $tour->destination_details_main_image = 'images/' . $homeImage->getClientOriginalName();
+        }
+
         if ($request->hasFile('destination')) {
             $destinationImage = $request->file('destination');
             $destinationImage->move(public_path('images'), $destinationImage->getClientOriginalName());

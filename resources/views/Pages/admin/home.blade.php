@@ -45,8 +45,24 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <textarea id="textarea1" class="materialize-textarea" name="Included"></textarea>
-                                        <label for="textarea1">Included</label>
+                                        <label for="textarea1" class="m_bottom">Tour plan</label>
+                                        <textarea name="tour_plan"></textarea>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <label for="textarea1" class="m_bottom">Included</label>
+                                        <textarea name="Included"></textarea>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <label for="textarea1" class="m_bottom">Excluded</label>
+                                        <textarea name="excluded"></textarea>
+
                                     </div>
                                 </div>
                                 <div class="row">
@@ -57,12 +73,16 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <select name="category">
-                                            <option value="">Choose Category</option>
-                                            <option value="1">Hotels</option>
-                                            <option value="2">Educations</option>
-                                        </select>
-                                        <label>Select Category</label>
+                                        <div class="file-field input-field">
+                                            <div class="btn">
+                                                <span>Image</span>
+                                                <input type="file" name="destination_details_main_image">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text"
+                                                    placeholder="Upload destination 860*450">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="input-field col s6">
                                         <div class="file-field input-field">
@@ -115,15 +135,28 @@
 
                                     </div>
                                     <div class="input-field col s6">
-                                        {{-- 
-                                        <input id="list-name" type="text" class="validate" name="days">
-                                        <label for="list-name">days</label> --}}
-
+                                        <div class="input-field col s6">
+                                            <select name="category">
+                                                <option value="">Choose Category</option>
+                                                <option value="1">Hiking and Trekking</option>
+                                                <option value="2">Mountain Abseiling </option>
+                                                <option value="3">Waterfall Abseiling </option>
+                                                <option value="4">Kayaking</option>
+                                                <option value="5">Surfing</option>
+                                                <option value="6">Water Rafting</option>
+                                                <option value="7">Gutsy girls (girls only
+                                                    hike/ abseil)</option>
+                                                <option value="8">Couple Tours</option>
+                                                <option value="9">Village Tours</option>
+                                            </select>
+                                            <label>Select Category</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="row">
                                         <div class="input-field col s12">
+                                            <label for="textarea1" class="m_bottom">Description</label>
                                             <textarea name="editor1"></textarea>
                                         </div>
                                     </div>
@@ -141,6 +174,9 @@
         </div>
     </div>
     <script>
-        CKEDITOR.replace('editor1'); // Use the name of your textarea
+        CKEDITOR.replace('editor1')
+        CKEDITOR.replace('Included');
+        CKEDITOR.replace('excluded');
+        CKEDITOR.replace('tour_plan');
     </script>
 @endsection
