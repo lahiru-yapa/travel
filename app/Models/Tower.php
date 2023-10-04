@@ -20,7 +20,8 @@ class Tower extends Model
         'price',
         'home_image',
          'destination_image', 
-         'destination_details_image'
+         'destination_details_image',
+         'excluded'
     ];
     
 }

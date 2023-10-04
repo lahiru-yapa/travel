@@ -184,174 +184,36 @@
                 <h2 class="sec-title">Most Popular Tours</h2>
             </div>
             <div class="row gy-30">
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="tour-card">
-                        <div class="tour-card__img"><img src="assets/img/trip/tour_1_1.jpg" alt="Tour Image"> <span
-                                class="tour-card__tag"><i class=""></i></span></div>
-                        <div class="tour-card__content">
-                            <div class="tour-card__top"><a href="https://www.google.com/maps"
-                                    class="tour-card__location"><i class="fa-light fa-location-dot"></i> Madrid,
-                                    Spain</a>
-                                <div class="tour-card__rating"><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i></div>
+
+                @foreach ($tours as $tour)
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="tour-card">
+                            <div class="tour-card__img"><img src="{{ $tour->home_image }}" alt="Tour Image"> <span
+                                    class="tour-card__tag"><i class=""></i></span></div>
+                            <div class="tour-card__content">
+                                <div class="tour-card__top"><a href="{{ $tour->location_map_link }}"
+                                        class="tour-card__location" target="_blank"> <i
+                                            class="fa-light fa-location-dot"></i>{{ $tour->location }}</a>
+                                    <div class="tour-card__rating"><i class="fa-solid fa-star-sharp"></i><i
+                                            class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i><i
+                                            class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i>
+                                    </div>
+                                </div>
+                                <h3 class="tour-card__title"><a
+                                        href="{{ route('destinatioDetails', ['id' => $tour->id]) }}">{{ $tour->title }}</a>
+                                </h3>
+                                <div class="tour-meta"><span><i class="fa-light fa-clock"></i> {{ $tour->days }}</span>
+                                    <span><i class="fa-light "></i></span>
+                                </div>
+                                <div class="tour-card__bottom"><span class="tour-card__price">From <span
+                                            class="price">${{ $tour->price }}</span></span> <a
+                                        href="{{ route('destinatioDetails', ['id' => $tour->id]) }}" class="link-btn">See
+                                        Details <i class="fas fa-arrow-up-right"></i></a></div>
                             </div>
-                            <h3 class="tour-card__title"><a href="tour-details.html">Brooklyn Beach Resort Tour</a></h3>
-                            <div class="tour-meta"><span><i class="fa-light fa-clock"></i> 10 Days</span> <span><i
-                                        class="fa-light "></i></span></div>
-                            <div class="tour-card__bottom"><span class="tour-card__price">From <span
-                                        class="price">$250</span></span> <a href="tour-details.html"
-                                    class="link-btn">See Details <i class="fas fa-arrow-up-right"></i></a></div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="tour-card">
-                        <div class="tour-card__img"><img src="assets/img/trip/tour_1_2.jpg" alt="Tour Image"> <span
-                                class="tour-card__tag"><i class=""></i></span></div>
-                        <div class="tour-card__content">
-                            <div class="tour-card__top"><a href="https://www.google.com/maps"
-                                    class="tour-card__location"><i class="fa-light fa-location-dot"></i> Chumphon,
-                                    Thailand</a>
-                                <div class="tour-card__rating"><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i></div>
-                            </div>
-                            <h3 class="tour-card__title"><a href="tour-details.html">Pak Chumphon Town Tour</a></h3>
-                            <div class="tour-meta"><span><i class="fa-light fa-clock"></i> 12 Days</span> <span><i
-                                        class="fa-light "></i></span></div>
-                            <div class="tour-card__bottom"><span class="tour-card__price">From <span
-                                        class="price">$450</span></span> <a href="tour-details.html"
-                                    class="link-btn">See Details <i class="fas fa-arrow-up-right"></i></a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="tour-card">
-                        <div class="tour-card__img"><img src="assets/img/trip/tour_1_3.jpg" alt="Tour Image"> <span
-                                class="tour-card__tag"><i class=""></i></span></div>
-                        <div class="tour-card__content">
-                            <div class="tour-card__top"><a href="https://www.google.com/maps"
-                                    class="tour-card__location"><i class="fa-light fa-location-dot"></i> Lasvegus,
-                                    USA</a>
-                                <div class="tour-card__rating"><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i></div>
-                            </div>
-                            <h3 class="tour-card__title"><a href="tour-details.html">Bali One Life Adventure</a></h3>
-                            <div class="tour-meta"><span><i class="fa-light fa-clock"></i> 07 Days</span> <span><i
-                                        class="fa-light "></i></span></div>
-                            <div class="tour-card__bottom"><span class="tour-card__price">From <span
-                                        class="price">$350</span></span> <a href="tour-details.html"
-                                    class="link-btn">See Details <i class="fas fa-arrow-up-right"></i></a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="tour-card">
-                        <div class="tour-card__img"><img src="assets/img/trip/tour_1_4.jpg" alt="Tour Image"> <span
-                                class="tour-card__tag"><i class=""></i></span></div>
-                        <div class="tour-card__content">
-                            <div class="tour-card__top"><a href="https://www.google.com/maps"
-                                    class="tour-card__location"><i class="fa-light fa-location-dot"></i> Barcelona,
-                                    Spain</a>
-                                <div class="tour-card__rating"><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i></div>
-                            </div>
-                            <h3 class="tour-card__title"><a href="tour-details.html">Places To Travel November</a></h3>
-                            <div class="tour-meta"><span><i class="fa-light fa-clock"></i> 13 Days</span> <span><i
-                                        class="fa-light "></i>+</span></div>
-                            <div class="tour-card__bottom"><span class="tour-card__price">From <span
-                                        class="price">$550</span></span> <a href="tour-details.html"
-                                    class="link-btn">See Details <i class="fas fa-arrow-up-right"></i></a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="tour-card">
-                        <div class="tour-card__img"><img src="assets/img/trip/tour_1_5.jpg" alt="Tour Image"> <span
-                                class="tour-card__tag"><i class=""></i></span></div>
-                        <div class="tour-card__content">
-                            <div class="tour-card__top"><a href="https://www.google.com/maps"
-                                    class="tour-card__location"><i class="fa-light fa-location-dot"></i> Lasvegus,
-                                    USA</a>
-                                <div class="tour-card__rating"><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i></div>
-                            </div>
-                            <h3 class="tour-card__title"><a href="tour-details.html">Brooklyn Christmas Lights</a></h3>
-                            <div class="tour-meta"><span><i class="fa-light fa-clock"></i> 15 Days</span> <span><i
-                                        class="fa-light "></i>+</span></div>
-                            <div class="tour-card__bottom"><span class="tour-card__price">From <span
-                                        class="price">$600</span></span> <a href="tour-details.html"
-                                    class="link-btn">See Details <i class="fas fa-arrow-up-right"></i></a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="tour-card">
-                        <div class="tour-card__img"><img src="assets/img/trip/tour_1_6.jpg" alt="Tour Image"> <span
-                                class="tour-card__tag"><i class=""></i></span></div>
-                        <div class="tour-card__content">
-                            <div class="tour-card__top"><a href="https://www.google.com/maps"
-                                    class="tour-card__location"><i class="fa-light fa-location-dot"></i> Madrid,
-                                    Spain</a>
-                                <div class="tour-card__rating"><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i></div>
-                            </div>
-                            <h3 class="tour-card__title"><a href="tour-details.html">Discovery Island Kayaking</a></h3>
-                            <div class="tour-meta"><span><i class="fa-light fa-clock"></i> 18 Days</span> <span><i
-                                        class="fa-light "></i>+</span></div>
-                            <div class="tour-card__bottom"><span class="tour-card__price">From <span
-                                        class="price">$250</span></span> <a href="tour-details.html"
-                                    class="link-btn">See Details <i class="fas fa-arrow-up-right"></i></a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="tour-card">
-                        <div class="tour-card__img"><img src="assets/img/trip/tour_1_7.jpg" alt="Tour Image"> <span
-                                class="tour-card__tag"><i class=""></i></span></div>
-                        <div class="tour-card__content">
-                            <div class="tour-card__top"><a href="https://www.google.com/maps"
-                                    class="tour-card__location"><i class="fa-light fa-location-dot"></i> Chumphon,
-                                    Thailand</a>
-                                <div class="tour-card__rating"><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i></div>
-                            </div>
-                            <h3 class="tour-card__title"><a href="tour-details.html">Los Glaciares & Fitz Trip</a></h3>
-                            <div class="tour-meta"><span><i class="fa-light fa-clock"></i> 20 Days</span> <span><i
-                                        class="fa-light "></i></span></div>
-                            <div class="tour-card__bottom"><span class="tour-card__price">From <span
-                                        class="price">$250</span></span> <a href="tour-details.html"
-                                    class="link-btn">See Details <i class="fas fa-arrow-up-right"></i></a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="tour-card">
-                        <div class="tour-card__img"><img src="assets/img/trip/tour_1_8.jpg" alt="Tour Image"> <span
-                                class="tour-card__tag"><i class=""></i></span></div>
-                        <div class="tour-card__content">
-                            <div class="tour-card__top"><a href="https://www.google.com/maps"
-                                    class="tour-card__location"><i class="fa-light fa-location-dot"></i> Lasvegus,
-                                    USA</a>
-                                <div class="tour-card__rating"><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i><i
-                                        class="fa-solid fa-star-sharp"></i><i class="fa-solid fa-star-sharp"></i></div>
-                            </div>
-                            <h3 class="tour-card__title"><a href="tour-details.html">Kupland Christmas Tour</a></h3>
-                            <div class="tour-meta"><span><i class="fa-light fa-clock"></i> 06 Days</span> <span><i
-                                        class="fa-light "></i></span></div>
-                            <div class="tour-card__bottom"><span class="tour-card__price">From <span
-                                        class="price">$550</span></span> <a href="tour-details.html"
-                                    class="link-btn">See Details <i class="fas fa-arrow-up-right"></i></a></div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </section>
