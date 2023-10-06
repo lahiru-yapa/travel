@@ -31,6 +31,7 @@ class HomeController extends Controller
 
     public function create_booking(Request $request)
     {
+        dd($request->all());
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',

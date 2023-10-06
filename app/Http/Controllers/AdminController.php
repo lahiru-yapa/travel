@@ -20,8 +20,20 @@ class AdminController extends Controller
 
     public function create_tour(Request $request)
     {
-       
-  
+        $chaptersData = [];
+        for ($i = 0; $i < 10; $i++) {
+            $editorName = 'editor' . $i;
+            $requestData = $request->$editorName;
+        
+            if ($requestData !== null) {
+                $chaptersData[$editorName] = $requestData;
+            } else {
+                // Handle the case where $requestData is null
+            }
+        }
+   
+
+ 
         $tour = new Tower();
         
         $tour->title = $request->input('title');
@@ -34,7 +46,8 @@ class AdminController extends Controller
         $tour->category =  $request->input('category');
         $tour->price = $request->input('price');
         $tour->description = $request->input('editor1');
-      
+        $tour->chapters = json_encode($chaptersData);
+        
         // Handling file uploads
         if ($request->hasFile('home_image')) {
             $homeImage = $request->file('home_image');

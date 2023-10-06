@@ -126,6 +126,12 @@
 
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary add-row">Add Row</button>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="input-field col s6">
 
@@ -157,11 +163,24 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <label for="textarea1" class="m_bottom">Description</label>
-                                            <textarea name="editor1"></textarea>
+                                            <textarea name="description"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
+                                    ====================
+
+                                    <h3 style='display:inline'>Chapter 1: </h3>
+
+                                    <textarea class="ckeditor" onChange="editing('Chapter 1');" name="editor0"></textarea>
+                                    <?php for ($i = 2; $i <= 10; $i++) {
+                                        echo "<div id='div_editor_" . $i . "' style='display:none;'><textarea id='editor_" . $i . "' name='editor" . $i . "'></textarea></div>";
+                                    } ?>
+                                    <br><br>
+                                    <input type="button" onclick="createEditor();" value=" Add chapter ">
+                                    <br><br>
+
+                                    ==========
                                     <div class="input-field col s12">
                                         <input type="submit" class="waves-effect waves-light btn-large" value="Submit">
                                     </div>
@@ -173,10 +192,52 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous">
+    </script>
+
     <script>
-        CKEDITOR.replace('editor1')
+        CKEDITOR.replace('description')
         CKEDITOR.replace('Included');
         CKEDITOR.replace('excluded');
         CKEDITOR.replace('tour_plan');
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-o6R6y5F5tC+TtGj4KGf3CpUJfB/U4t3flq6yoY6/cCf52NTbWw6HlI5OIXe5x9It" crossorigin="anonymous">
+    </script>
+
+    <script>
+        function toggle_visibility(id) {
+            var element = document.getElementById(id);
+            if (element.style.display === 'none') {
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
+            }
+        }
+
+
+
+        num_chapter = 2;
+        var editor = new Array();
+
+        function createEditor() {
+            if (num_chapter <= 10) {
+                toggle_visibility('div_editor_' + num_chapter);
+
+                document.getElementById('div_editor_' + num_chapter).insertAdjacentHTML("afterbegin",
+                    "<br><br><h3 style='display:inline'>Chapter " + num_chapter +
+                    ": </h3><br><br>");
+
+                // Create a new editor inside the <div id="editor">, setting its value to html
+                CKEDITOR.replace('editor_' + num_chapter);
+
+                num_chapter += 1;
+            } else {
+                alert("Sorry, maximum is 10 chapters.");
+            }
+        }
     </script>
 @endsection
