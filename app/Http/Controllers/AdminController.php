@@ -32,7 +32,6 @@ class AdminController extends Controller
             }
         }
    
-
  
         $tour = new Tower();
         
@@ -45,7 +44,7 @@ class AdminController extends Controller
         $tour->group_size = $request->input('group_size');
         $tour->category =  $request->input('category');
         $tour->price = $request->input('price');
-        $tour->description = $request->input('editor1');
+        $tour->description = $request->input('description');
         $tour->chapters = json_encode($chaptersData);
         
         // Handling file uploads

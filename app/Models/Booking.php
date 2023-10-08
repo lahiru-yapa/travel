@@ -14,6 +14,9 @@ class Booking extends Model
         'name', 
         'email', 
          'adult',
+         'country',
+         'number',
+         'tower_id',
          'child',
         'date', 
         'message'

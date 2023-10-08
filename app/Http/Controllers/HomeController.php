@@ -29,33 +29,49 @@ class HomeController extends Controller
         return view('Pages.destination.destinationDetails', compact('tour','towersList'));
     }
 
+    public function create_review(Request $request)
+    {
+dd($request->all());
+    }
     public function create_booking(Request $request)
     {
-        dd($request->all());
+     
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
-            'date' => 'required',
+            'adult'=>'required',
+            'child'=>'required',
+            'country'=>'required',
+            'number'=>'required',
+            'arrivedate' => 'required',
             'message' => 'required|string',
         ], [
             'name.required' => 'Name is required.',
             'email.required' => 'Email is required.',
+            'number.required' => 'Number is required.',
+            'child.required' => 'child is required.',
+            'country.required' => 'Country is required.',
+            'adult.required' => 'Adult is required.',
             'email.email' => 'Please enter a valid email address.',
-            'date.required' => 'Date is required.',
+            'arrivedate.required' => 'Date is required.',
             'message.required' => 'Message is required.',
         ]
     
     );
 
+  
        // Create a new FormSubmission instance
     $formSubmission = new Booking;
     $formSubmission->name = $validatedData['name'];
     $formSubmission->email = $validatedData['email'];
-    $formSubmission->adult = $request['adult_quantity'];
-    $formSubmission->child = $request['child_quantity'];
-    $formSubmission->date = $validatedData['date'];
+    $formSubmission->country = $validatedData['country'];
+    $formSubmission->number = $validatedData['number'];
+    $formSubmission->adult = $request['adult'];
+    $formSubmission->child = $request['child'];
+    $formSubmission->arrivedate = $validatedData['arrivedate'];
     $formSubmission->message = $validatedData['message'];
     $formSubmission->tower_id = $request['tower_id'];
+    $formSubmission->enddate = $request['enddate'];
     
     // Save the data to the database
     $formSubmission->save();

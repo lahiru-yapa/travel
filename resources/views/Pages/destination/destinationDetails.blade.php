@@ -71,10 +71,13 @@
 
                                                 <div class="form-group"><input type="text" class="form-control"
                                                         name="name" id="name" placeholder="Your Name"> <i
-                                                        class="fal fa-user"></i></div>
+                                                        class="fal fa-user"></i>
+                                                    <div id="error_name" class="validation_error"></div>
+                                                </div>
                                                 <div class="form-group"><input type="email" class="form-control"
                                                         name="email" id="email" placeholder="Your Email"> <i
                                                         class="fal fa-envelope"></i>
+                                                    <div id="error_email" class="validation_error"></div>
                                                 </div>
                                                 <div class="form-group">
 
@@ -83,42 +86,49 @@
                                                 </div>
                                                 <div class="form-group"><input type="tel" class="form-control"
                                                         name="number" id="number" placeholder="Phone Number"> <i
-                                                        class="fal fa-phone"></i></div>
+                                                        class="fal fa-phone"></i>
+                                                    <div id="error_number" class="validation_error"></div>
+                                                </div>
                                                 <div class="row">
                                                     <input type="hidden" name="tower_id" name="tower_id"
                                                         value="{{ $tour->id }}">
                                                     <div class="col-6 form-group"><input type="number" id="quantity"
-                                                            name="adult_quantity" min="1" max="100"
-                                                            placeholder="adults count" name="adult"></div>
+                                                            min="1" max="100" placeholder="adults count"
+                                                            name="adult">
+                                                        <div id="error_adult" class="validation_error"></div>
+                                                    </div>
                                                     <div class="col-6 form-group">
-                                                        <input type="number" id="quantity" name="child_quantity"
-                                                            min="1" max="100" placeholder="child count"
-                                                            name="child">
+                                                        <input type="number" id="quantity" min="1"
+                                                            max="100" placeholder="child count" name="child">
+                                                        <div id="error_child" class="validation_error"></div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <input type="hidden" name="tower_id" name="tower_id"
                                                         value="{{ $tour->id }}">
-                                                    <div class="col-6 form-group"><input type="text"
-                                                            class="form-control" name="date" id="date"
-                                                            placeholder="Arrival Date"> <i
-                                                            class="fal fa-calendar-alt"></i>
+                                                    <div class="col-6 form-group"><input type="text" id="datepicker"
+                                                            placeholder="Select a date" class="form-control"
+                                                            name="arrivedate"> <i class="fal fa-calendar-alt"></i>
+                                                        <div id="error_arrivedate" class="validation_error"></div>
                                                     </div>
                                                     <div class="col-6 form-group">
-                                                        <input type="text" class="form-control" name="date"
-                                                            id="date" placeholder="Departure Date"> <i
-                                                            class="fal fa-calendar-alt"
+                                                        <input type="text" id="datepicker1"
+                                                            placeholder="Select a date" class="form-control"
+                                                            name="enddate"> <i class="fal fa-calendar-alt"
                                                             style="text-align: center !important"></i>
+                                                        <div id="error_enddate" class="validation_error">
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <textarea name="message" id="message" cols="30" rows="3" class="form-control"
-                                                        placeholder="Your Message"></textarea> <i class="fal fa-pencil"></i>
-                                                </div>
-                                                <div class="form-btn"><button class="ot-btn w-100">Book now</button>
-                                                </div>
-                                                <p class="form-messages mb-0 mt-3"></p>
+                                                    <div class="form-group">
+                                                        <textarea name="message" id="message" cols="30" rows="3" class="form-control"
+                                                            placeholder="Your Message"></textarea> <i class="fal fa-pencil"></i>
+                                                        <div id="error_message" class="validation_error">
+                                                        </div>
+                                                        <div class="form-btn"><button class="ot-btn w-100">Book
+                                                                now</button>
+                                                        </div>
+                                                        <p class="form-messages mb-0 mt-3"></p>
                                             </form>
                                         </div>
                                     </div>
@@ -222,27 +232,31 @@
                                     *
                                 </p>
                             </div>
-                            <div class="row">
-                                <div class="form-group rating-select d-flex align-items-center"><label>Your
-                                        Rating</label>
-                                    <p class="stars"><span><a class="star-1" href="#">1</a> <a class="star-2"
-                                                href="#">2</a> <a class="star-3" href="#">3</a> <a
-                                                class="star-4" href="#">4</a> <a class="star-5"
-                                                href="#">5</a></span></p>
+                            <form action="{{ route('create_review') }}" method="POST" class="widget-form">
+                                @csrf
+                                <div class="row">
+                                    <div class="form-group rating-select d-flex align-items-center"><label>Your
+                                            Rating</label>
+                                        <p class="stars"><span><a class="star-1" href="#">1</a> <a class="star-2"
+                                                    href="#">2</a> <a class="star-3" href="#">3</a> <a
+                                                    class="star-4" href="#">4</a> <a class="star-5"
+                                                    href="#">5</a></span></p>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <textarea placeholder="Write a Message" class="form-control" name="message"></textarea> <i class="text-title far fa-pencil-alt"></i>
+                                    </div>
+                                    <div class="col-md-6 form-group"><input type="text" placeholder="Your Name"
+                                            class="form-control" name="name"> <i class="text-title far fa-user"></i>
+                                    </div>
+                                    <div class="col-md-6 form-group"><input type="text" placeholder="Your Email"
+                                            class="form-control" name="email"> <i
+                                            class="text-title far fa-envelope"></i></div>
+
+                                    <div class="col-12 form-group mb-0"><button class="ot-btn" type="submit">Post
+                                            Review</button></div>
                                 </div>
-                                <div class="col-12 form-group">
-                                    <textarea placeholder="Write a Message" class="form-control"></textarea> <i class="text-title far fa-pencil-alt"></i>
-                                </div>
-                                <div class="col-md-6 form-group"><input type="text" placeholder="Your Name"
-                                        class="form-control"> <i class="text-title far fa-user"></i></div>
-                                <div class="col-md-6 form-group"><input type="text" placeholder="Your Email"
-                                        class="form-control"> <i class="text-title far fa-envelope"></i></div>
-                                <div class="col-12 form-group"><input id="reviewcheck" name="reviewcheck"
-                                        type="checkbox"> <label for="reviewcheck">Save my name, email, and website in
-                                        this browser for the next time I comment.<span class="checkmark"></span></label>
-                                </div>
-                                <div class="col-12 form-group mb-0"><button class="ot-btn">Post Review</button></div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -250,6 +264,10 @@
             </div>
         </div>
     </section>
+
+    <!-- Include flatpickr CSS and JavaScript -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -262,14 +280,54 @@
                     url: '{{ route('create_booking') }}',
                     data: formData,
                     success: function(response) {
-                        console.log(response);
+
                         // Handle the success response here
                         $('.form-messages').text(response.message);
                     },
-                    error: function(error) {
-                        // Handle any errors here
-                        console.error(error);
+                    error: function(xhr, status, error) {
+                        console.log("response", xhr.responseJSON.errors);
+                        var errors = xhr.responseJSON.errors;
+                        // Logging responseJSON
+                        // Clear any previous errors
+                        $('#error_name').empty();
+                        $('#error_email').empty();
+                        $('#error_number').empty();
+                        $('#error_adult').empty();
+                        $('#error_child').empty();
+                        $('#error_arrivedate').empty();
+                        $('#error_enddate').empty();
+                        $('#error_message').empty();
+
+
+
+                        if (errors.hasOwnProperty('name')) {
+                            $('#error_name').text(errors.name[0]);
+                        }
+                        if (errors.hasOwnProperty('email')) {
+                            $('#error_email').text(errors.email[0]);
+                        }
+
+                        if (errors.hasOwnProperty('adult')) {
+                            $('#error_adult').text(errors.adult[0]);
+                        }
+
+                        if (errors.hasOwnProperty('arrivedate')) {
+                            $('#error_arrivedate').text(errors.arrivedate[0]);
+                        }
+                        if (errors.hasOwnProperty('number')) {
+                            $('#error_number').text(errors.number[0]);
+                        }
+
+                        if (errors.hasOwnProperty('child')) {
+                            $('#error_child').text(errors.child[0]);
+                        }
+                        if (errors.hasOwnProperty('message')) {
+                            $('#error_message').text(errors.message[0]);
+                        }
+
                     }
+
+
                 });
             });
         });
@@ -299,5 +357,17 @@
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
+    </script>
+    <script>
+        flatpickr("#datepicker", {
+            dateFormat: "Y-m-d", // Customize the date format as needed
+            // You can add more configuration options here
+        });
+    </script>
+    <script>
+        flatpickr("#datepicker1", {
+            dateFormat: "Y-m-d", // Customize the date format as needed
+            // You can add more configuration options here
+        });
     </script>
 @endsection
