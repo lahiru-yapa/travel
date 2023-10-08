@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('destination_image')->nullable();
             $table->string('destination_details_main_image')->nullable();
             $table->json('destination_details_image')->nullable();
+            $table->json('chapters')->nullable();
             $table->timestamps();
         });
     }

@@ -11,40 +11,37 @@
         <div class="mobile-logo"><a href="index.html"><img src="assets/img/logo.svg" alt="Travon"></a></div>
         <div class="ot-mobile-menu">
             <ul>
-                <li class="menu-item-has-children"><a href="#">Home</a>
+                <li><a href="{{ route('home') }}">Home</a></li>
+
+                <li class="menu-item-has-children"><a href="#">Adventure Categories
+                    </a>
                     <ul class="sub-menu">
-                        <li><a href="index.html">Home One</a></li>
-                        <li><a href="index-2.html">Home Two</a></li>
+                        <li><a href="{{ route('destination1', ['id' => 1]) }}">Hiking and
+                                Trekking</a></li>
+                        <li><a href="{{ route('destination1', ['id' => 2]) }}">Mountain Abseiling </a>
+                        </li>
+                        <li><a href="{{ route('destination1', ['id' => 3]) }}">Waterfall Abseiling </a>
+                        </li>
+                        <li><a href="{{ route('destination1', ['id' => 4]) }}">Kayaking </a></li>
+                        <li><a href="{{ route('destination1', ['id' => 5]) }}">Surfing </a></li>
+                        <li><a href="{{ route('destination1', ['id' => 6]) }}">Water Rafting</a></li>
+                        <li><a href="{{ route('destination1', ['id' => 7]) }}">Gutsy girls (girls only
+                                hike/ abseil)</a></li>
+                        <li><a href="{{ route('destination1', ['id' => 8]) }}">Couple Tours</a></li>
+                        <li><a href="{{ route('destination1', ['id' => 9]) }}">Village Tours</a></li>
                     </ul>
                 </li>
-                <li class="menu-item-has-children"><a href="#">Destination</a>
+
+                <li class="menu-item-has-children"><a href="#">Best Holiday Packages</a>
                     <ul class="sub-menu">
-                        <li><a href="destination.html">Destination</a></li>
-                        <li><a href="destination-details.html">Destination Details</a></li>
+                        <li><a href="blog.html">Fammily trip</a></li>
+                        <li><a href="blog-details.html">Romantic Gateway</a></li>
+                        <li><a href="blog.html">Cultural tours</a></li>
+                        <li><a href="blog-details.html">Ramayanaya Trail</a></li>
                     </ul>
                 </li>
-                <li class="menu-item-has-children"><a href="#">Tour Types</a>
-                    <ul class="sub-menu">
-                        <li><a href="tour.html">Tour</a></li>
-                        <li><a href="tour-details.html">Tour Details</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item-has-children"><a href="#">Pages</a>
-                    <ul class="sub-menu">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="team.html">Team</a></li>
-                        <li><a href="team-details.html">Team Details</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
-                        <li><a href="error.html">Error Page</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item-has-children"><a href="#">Blog</a>
-                    <ul class="sub-menu">
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="contact.html">Contact Us</a></li>
+                {{-- <li><a href="{{ route('gallery') }}">Gallery</a></li>
+                <li><a href="{{ route('contact') }}">Contact Us</a></li> --}}
             </ul>
         </div>
     </div>
@@ -126,6 +123,8 @@
                                 <li><a href="{{ route('contact') }}">Contact Us</a></li> --}}
                             </ul>
                         </nav>
+                        </nav><button type="button" class="ot-menu-toggle d-inline-block d-lg-none"><i
+                                class="far fa-bars"></i></button>
                     </div>
                     <div class="col-auto d-none d-xl-block">
                         <div class="header-button">

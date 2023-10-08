@@ -24,6 +24,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/destination1/{id}', [HomeController::class, 'destination1'])->name('destination1');
 Route::get('destinatioDetails/{id}', [HomeController::class, 'destinatioDetails'])->name('destinatioDetails');
 Route::POST('/create-booking', [HomeController::class, 'create_booking'])->name('create_booking');
+Route::POST('/create_review', [HomeController::class, 'create_review'])->name('create_review');
 
 
 Route::middleware([
