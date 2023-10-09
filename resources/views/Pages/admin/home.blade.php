@@ -75,7 +75,7 @@
                                     <div class="input-field col s6">
                                         <div class="file-field input-field">
                                             <div class="btn">
-                                                <span>Image</span>
+                                                <span>Destination Details Main Image</span>
                                                 <input type="file" name="destination_details_main_image">
                                             </div>
                                             <div class="file-path-wrapper">
@@ -87,7 +87,7 @@
                                     <div class="input-field col s6">
                                         <div class="file-field input-field">
                                             <div class="btn">
-                                                <span>Image</span>
+                                                <span>Home Page Image</span>
                                                 <input type="file" name="home_image">
                                                 <!-- Added the name attribute -->
                                             </div>
@@ -102,7 +102,7 @@
                                     <div class="input-field col s6">
                                         <div class="file-field input-field">
                                             <div class="btn">
-                                                <span>Image</span>
+                                                <span>Destination Image</span>
                                                 <input type="file" name="destination">
                                             </div>
                                             <div class="file-path-wrapper">
@@ -114,24 +114,20 @@
                                     <div class="input-field col s6">
                                         <div class="file-field input-field">
                                             <div class="btn">
-                                                <span>Image</span>
+                                                <span>Image Gallery</span>
                                                 <input type="file" name="destination_details[]" accept="image/*"
                                                     multiple>
                                             </div>
                                             <div class="file-path-wrapper">
                                                 <input class="file-path validate" type="text"
-                                                    placeholder="Upload destination details">
+                                                    placeholder="Upload destination details 415 ">
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button type="button" class="btn btn-primary add-row">Add Row</button>
-                                    </div>
-                                </div>
+
                                 <div class="row">
                                     <div class="input-field col s6">
 

@@ -53,6 +53,134 @@
                                 </div>
                                 <div class="tour-img"><img src="{{ asset($tour->destination_image) }}" alt="Tour Image">
                                 </div>
+                                <ul class="nav tour-tab" id="tourTab" role="tablist">
+                                    <li class="nav-item" role="presentation"><a class="nav-link ot-btn active"
+                                            id="description-tab" data-bs-toggle="tab" href="#tourDescription" role="tab"
+                                            aria-controls="tourDescription" aria-selected="true">Information</a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link ot-btn" id="plan-tab"
+                                            data-bs-toggle="tab" href="#plan" role="tab" aria-controls="plan"
+                                            aria-selected="false">Tour Plan</a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link ot-btn" id="photos-tab"
+                                            data-bs-toggle="tab" href="#photos" role="tab" aria-controls="photos"
+                                            aria-selected="false">Tour Photos</a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link ot-btn" id="location-tab"
+                                            data-bs-toggle="tab" href="#location" role="tab" aria-controls="location"
+                                            aria-selected="false">Location</a></li>
+
+
+                                </ul>
+
+                                <div class="tab-content" id="productTabContent">
+                                    <div class="tab-pane fade show active" id="tourDescription" role="tabpanel"
+                                        aria-labelledby="description-tab">
+                                        <div class="tour-description">
+                                            <h3 class="inner-title">Description</h3>
+                                            <p class="mt-n2 mb-4">{!! $tour->description !!}</p>
+
+                                            <div class="description-table-wrap">
+                                                {!! $tour->Included !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @php
+                                        $chapters = json_decode($tour->chapters, true);
+                                        $index = 1;
+                                    @endphp
+
+                                    <div class="tab-pane fade" id="plan" role="tabpanel" aria-labelledby="plan-tab">
+                                        <div class="tour-plan">
+                                            <h3 class="inner-title">Tour Plan</h3>
+                                            <div class="accordion" id="planAccordion">
+                                                @foreach ($chapters as $content)
+                                                    <div class="accordion-card">
+                                                        <div class="accordion-header"
+                                                            id="collapse-item-{{ $index }}">
+                                                            <button class="accordion-button collapsed" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#collapse-{{ $index }}"
+                                                                aria-expanded="false" aria-controls="collapse-1">Day
+                                                                {{ $index }}
+                                                            </button>
+                                                        </div>
+                                                        <div id="collapse-{{ $index }}"
+                                                            class="accordion-collapse collapse"
+                                                            aria-labelledby="collapse-item-{{ $index }}"
+                                                            data-bs-parent="#planAccordion">
+                                                            <div class="accordion-body">
+                                                                {!! $content !!}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @php $index++; @endphp
+                                                @endforeach
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="photos" role="tabpanel"
+                                        aria-labelledby="photos-tab">
+                                        <div class="tour-photos">
+                                            <div class="row g-4 masonary-active">
+                                                @php
+                                                    $destination_details_image = json_decode($tour->destination_details_image, true);
+                                                    
+                                                @endphp
+
+                                                @foreach ($destination_details_image as $image)
+                                                    <div class="col-md-6 filter-item">
+                                                        <div class="tour-photo"><img src="{{ asset($image) }}"
+                                                                alt="Image">
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="location" role="tabpanel"
+                                        aria-labelledby="location-tab">
+                                        <div class="tour-location"><iframe src="{{ $tour->location_map_link }}"
+                                                allowfullscreen="" loading="lazy"></iframe></div>
+                                    </div>
+                                </div>
+                                <div class="ot-comment-form">
+                                    <div class="form-title">
+                                        <h3 class="blog-inner-title">Leave A Reply</h3>
+                                        <p class="text">Your email address will not be published. Required fields are
+                                            marked
+                                            *
+                                        </p>
+                                    </div>
+                                    <form action="{{ route('create_review') }}" method="POST" class="widget-form">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="form-group rating-select d-flex align-items-center"><label>Your
+                                                    Rating</label>
+                                                <p class="stars"><span><a class="star-1" href="#">1</a> <a
+                                                            class="star-2" href="#">2</a> <a class="star-3"
+                                                            href="#">3</a> <a class="star-4" href="#">4</a>
+                                                        <a class="star-5" href="#">5</a></span></p>
+                                            </div>
+
+                                            <div class="col-12 form-group">
+                                                <textarea placeholder="Write a Message" class="form-control" name="message"></textarea> <i class="text-title far fa-pencil-alt"></i>
+                                            </div>
+                                            <div class="col-md-6 form-group"><input type="text"
+                                                    placeholder="Your Name" class="form-control" name="name"> <i
+                                                    class="text-title far fa-user"></i>
+                                            </div>
+                                            <div class="col-md-6 form-group"><input type="text"
+                                                    placeholder="Your Email" class="form-control" name="email"> <i
+                                                    class="text-title far fa-envelope"></i></div>
+
+                                            <div class="col-12 form-group mb-0"><button class="ot-btn"
+                                                    type="submit">Post
+                                                    Review</button></div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                             <div class="col-xxl-4 col-lg-6">
 
@@ -63,10 +191,12 @@
                                                 <h4 class="title">Book This Tour</h4>
                                                 <p class="price">${{ $tour->price }}per person</p>
                                             </div>
-                                            <form action="{{ route('create_booking') }}" method="POST" class="widget-form">
+                                            <form action="{{ route('create_booking') }}" method="POST"
+                                                class="widget-form">
                                                 @csrf
                                                 <div class="form-group"><input type="text" class="form-control"
-                                                        name="name" id="name" value="{{ $tour->title }}" readonly>
+                                                        name="name" id="name" value="{{ $tour->title }}"
+                                                        readonly>
                                                 </div>
 
                                                 <div class="form-group"><input type="text" class="form-control"
@@ -119,20 +249,70 @@
                                                         <div id="error_enddate" class="validation_error">
                                                         </div>
                                                     </div>
+                                                </div>
 
-                                                    <div class="form-group">
-                                                        <textarea name="message" id="message" cols="30" rows="3" class="form-control"
-                                                            placeholder="Your Message"></textarea> <i class="fal fa-pencil"></i>
-                                                        <div id="error_message" class="validation_error">
-                                                        </div>
-                                                        <div class="form-btn"><button class="ot-btn w-100">Book
-                                                                now</button>
-                                                        </div>
-                                                        <p class="form-messages mb-0 mt-3"></p>
+                                                <div class="form-group">
+                                                    <textarea name="message" id="message" cols="30" rows="3" class="form-control"
+                                                        placeholder="Your Message"></textarea> <i class="fal fa-pencil"></i>
+                                                    <div id="error_message" class="validation_error">
+                                                    </div>
+                                                    <div class="form-btn"><button class="ot-btn w-100">Book
+                                                            now</button>
+                                                    </div>
+                                                </div>
+                                                <p class="form-messages mb-0 mt-3"></p>
                                             </form>
                                         </div>
                                     </div>
-
+                                    <div class="widget">
+                                        <h3 class="widget_title">Last Minute Deals</h3>
+                                        <div class="recent-post-wrap">
+                                            <div class="recent-post">
+                                                <div class="media-img"><a href="blog-details.html"><img
+                                                            src="assets/img/trip/recent-tour-1-1.jpg"
+                                                            alt="Blog Image"></a></div>
+                                                <div class="media-body">
+                                                    <h4 class="post-title"><a class="text-inherit"
+                                                            href="blog-details.html">Brooklyn
+                                                            Christmas Lights</a></h4><span class="tour-price">From <span
+                                                            class="price">250$</span></span>
+                                                </div>
+                                            </div>
+                                            <div class="recent-post">
+                                                <div class="media-img"><a href="blog-details.html"><img
+                                                            src="assets/img/trip/recent-tour-1-2.jpg"
+                                                            alt="Blog Image"></a></div>
+                                                <div class="media-body">
+                                                    <h4 class="post-title"><a class="text-inherit"
+                                                            href="blog-details.html">Java &
+                                                            Bali One Life Adventure</a></h4><span class="tour-price">From
+                                                        <span class="price">250$</span></span>
+                                                </div>
+                                            </div>
+                                            <div class="recent-post">
+                                                <div class="media-img"><a href="blog-details.html"><img
+                                                            src="assets/img/trip/recent-tour-1-3.jpg"
+                                                            alt="Blog Image"></a></div>
+                                                <div class="media-body">
+                                                    <h4 class="post-title"><a class="text-inherit"
+                                                            href="blog-details.html">Places
+                                                            To Travel In November</a></h4><span class="tour-price">From
+                                                        <span class="price">250$</span></span>
+                                                </div>
+                                            </div>
+                                            <div class="recent-post">
+                                                <div class="media-img"><a href="blog-details.html"><img
+                                                            src="assets/img/trip/recent-tour-1-3.jpg"
+                                                            alt="Blog Image"></a></div>
+                                                <div class="media-body">
+                                                    <h4 class="post-title"><a class="text-inherit"
+                                                            href="blog-details.html">Pak Nam
+                                                            Chumphon Town Tour</a></h4><span class="tour-price">From <span
+                                                            class="price">250$</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </aside>
 
                             </div>
